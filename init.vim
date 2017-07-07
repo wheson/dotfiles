@@ -53,6 +53,7 @@ let g:python3_host_prog = $PYENV_ROOT . '/shims/python3'
 syntax on
 colorscheme iceberg 
 set number
+set cursorline
 tnoremap <Esc> <C-\><C-n>
 
 set clipboard+=unnamed
