@@ -9,25 +9,51 @@ snippet kyoupro
         #include <set>
         #include <stack>
         #include <queue>
-        #define REP(i, n) for(int i = 0;i < n;i++)
-        #define REPR(i, n) for(int i = n;i >= 0;i--)
-        #define FOR(i, m, n) for(int i = m;i < n;i++)
-        #define FORR(i, m, n) for(int i = m;i >= n;i--)
+        #define REP(i, n) for(LL i = 0;i < n;i++)
+        #define REPR(i, n) for(LL i = n;i >= 0;i--)
+        #define FOR(i, m, n) for(LL i = m;i < n;i++)
+        #define FORR(i, m, n) for(LL i = m;i >= n;i--)
         #define SORT(v, n) sort(v, v+n);
         #define VSORT(v) sort(v.begin(), v.end());
-        #define LL long long
         #define pb(a) push_back(a)
         #define INF 999999999
-        #define beginend(vec) (vec).begin(),(vec).end()
+        #define MOD 1000000007
         using namespace std;
+        typedef long long LL;
         typedef pair<int, int> P;
         typedef pair<LL, LL> LP;
         typedef pair<int, P> PP;
         typedef pair<LL, LP> LPP;
-        vector<LL> sieveOfEratosthenes(int max) { LL prime; double sqrtmax = sqrt(max); vector<LL> primeVec, searchVec; FOR(i, 2, max + 1) searchVec.push_back(i); do { prime = searchVec[0]; primeVec.push_back(prime); auto itr = remove_if(beginend(searchVec), [=](LL x)->bool {return x%prime == 0; }); searchVec.erase(itr, searchVec.end()); } while (prime < sqrtmax); primeVec.reserve(primeVec.size() + searchVec.size()); primeVec.insert(primeVec.end(), beginend(searchVec)); return primeVec; }
         int dy[]={0, 0, 1, -1, 0};
         int dx[]={1, -1, 0, 0, 0};
+        
+        // LL を使う場合はコメントアウト
+        typedef LL int;
 
         int main(){
                 ${1}
         }
+
+snippet eratos
+        // maxまでの素数をvectorに入れて返す
+        vector<LL> eratos(LL max){
+            vector<LL> primeVec;
+            vector<bool> isprime;
+            double sqrtmax = sqrt(max);
+            isprime.resize(max + 1);
+            isprime[0] = false; isprime[1] = false;
+            FOR(i, 2, max + 1){
+                isprime[i] = true;
+            }
+            FOR(i, 2, sqrtmax){
+                if(isprime[i]){
+                    for(int j = 0; i * (j + 2) < max + 1; ++j){
+                        isprime[i * (j + 2)] = false;
+                    }
+                }
+            }
+            REP(i, max + 1){
+                if(isprime[i])  primeVec.pb(i);
+            }
+            return primeVec;
+        } 
