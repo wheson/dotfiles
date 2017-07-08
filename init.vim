@@ -2,40 +2,39 @@ if &compatible
   set nocompatible               " Be iMproved
 endif
 
-" Required:
-set runtimepath+=/Users/wheson/.cache/dein/repos/github.com/Shougo/dein.vim
+" プラグインがインストールされるディレクトリ
+let s:dein_dir = expand('~/.cache/dein')
+" dein.vim 本体
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
-" Required:
-if dein#load_state('/Users/wheson/.cache/dein')
-  call dein#begin('/Users/wheson/.cache/dein')
+" dein.vim がなければ github から落としてくる
+if &runtimepath !~# '/dein.vim'
+  if !isdirectory(s:dein_repo_dir)
+    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+  endif
+  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
+endif
 
-  " Let dein manage dein
-  " Required:
-  call dein#add('/Users/wheson/.cache/dein/repos/github.com/Shougo/dein.vim')
+" 設定開始
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
 
-  " Add or remove your plugins here:
-  call dein#add('Shougo/neosnippet.vim')
-  call dein#add('Shougo/neosnippet-snippets')
+  " プラグインリストを収めた TOML ファイル
+  " 予め TOML ファイルを用意しておく
+  let g:rc_dir    = expand("~/.config/nvim/")
+  let s:toml      = g:rc_dir . '/dein.toml'
+  let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
 
-  " You can specify revision/branch/tag.
-  call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
-  
-  call dein#add('Shougo/deoplete.nvim')
-  let g:deoplete#enable_at_startup = 1
+  " TOML を読み込み、キャッシュしておく
+  call dein#load_toml(s:toml,      {'lazy': 0})
+  call dein#load_toml(s:lazy_toml, {'lazy': 1})
 
-  call dein#add('Shougo/unite.vim')
-  call dein#add('Shougo/neomru.vim')
-
-  " Required:
+  " 設定終了
   call dein#end()
   call dein#save_state()
 endif
 
-" Required:
-filetype plugin indent on
-syntax enable
-
-" If you want to install not installed plugins on startup.
+" もし、未インストールものものがあったらインストール
 if dein#check_install()
   call dein#install()
 endif
@@ -57,6 +56,13 @@ set cursorline
 tnoremap <Esc> <C-\><C-n>
 
 set clipboard+=unnamed
+
+nnoremap j gj
+nnoremap k gk
+nnoremap <Down> gj
+nnoremap <Up> gk
+nnoremap gj j
+nnoremap gk k
 
 inoremap [ []<LEFT>
 inoremap ( ()<LEFT>
@@ -91,37 +97,6 @@ function! DeleteParenthesesAdjoin()
 endfunction
 " BackSpaceに割り当て
 inoremap <silent> <BS> <C-R>=DeleteParenthesesAdjoin()<CR>
-
-" Plugin key-mappings.  " <C-k>でsnippetの展開
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-" 自分用 snippet ファイルの場所 (任意のパス)
-let g:neosnippet#snippets_directory = '~/.config/nvim/snippets'
-
-" http://blog.remora.cx/2010/12/vim-ref-with-unite.html
-""""""""""""""""""""""""""""""
-" Unit.vimの設定
-""""""""""""""""""""""""""""""
-" 入力モードで開始する
-let g:unite_enable_start_insert=1
-" バッファ一覧
-noremap <C-P> :Unite buffer<CR>
-" ファイル一覧
-noremap <C-N> :Unite -buffer-name=file file<CR>
-" 最近使ったファイルの一覧
-noremap <C-Z> :Unite file_mru<CR>
-" sourcesを「今開いているファイルのディレクトリ」とする
-noremap :uff :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
-" ウィンドウを分割して開く
-au FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
-au FileType unite inoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
-" ウィンドウを縦に分割して開く
-au FileType unite nnoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
-au FileType unite inoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
-" ESCキーを2回押すと終了する
-au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
-au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
-""""""""""""""""""""""""""""""
 
 "インデントの大きさをファイルごとに設定
 set tabstop=4

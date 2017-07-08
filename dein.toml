@@ -1,0 +1,54 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+hook_post_update = '''
+  if dein#util#_is_windows()
+    let cmd = 'tools\\update-dll-mingw'
+  elseif dein#util#_is_cygwin()
+    let cmd = 'make -f make_cygwin.mak'
+  elseif executable('gmake')
+    let cmd = 'gmake'
+  else
+    let cmd = 'make'
+  endif
+  let g:dein#plugin.build = cmd
+'''
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+hook_post_update = '''
+  let g:quickrun_config = {'*': {'hook/time/enable': '1'},}
+'''
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+hook_add = '''
+  let g:unite_enable_start_insert=1
+  noremap <C-P> :Unite buffer<CR>
+  noremap <C-N> :Unite -buffer-name=file file<CR>
+  noremap <C-Z> :Unite file_mru<CR>
+  noremap :uff :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
+  au FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
+  au FileType unite inoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
+  au FileType unite nnoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
+  au FileType unite inoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
+  au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
+  au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+'''
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+hook_add = '''
+  imap <C-k> <Plug>(neosnippet_expand_or_jump)
+  smap <C-k> <Plug>(neosnippet_expand_or_jump)
+  let g:neosnippet#snippets_directory = '~/.config/nvim/snippets'
+'''
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
