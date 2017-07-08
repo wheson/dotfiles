@@ -16,25 +16,35 @@ snippet kyoupro
         #define SORT(v, n) sort(v, v+n);
         #define VSORT(v) sort(v.begin(), v.end());
         #define pb(a) push_back(a)
+        #define all(x) (x).begin(),(x).end()
         #define INF 999999999
         #define MOD 1000000007
         using namespace std;
         typedef long long LL;
+        //typedef LL int;
         typedef pair<int, int> P;
         typedef pair<LL, LL> LP;
         typedef pair<int, P> PP;
         typedef pair<LL, LP> LPP;
         int dy[]={0, 0, 1, -1, 0};
         int dx[]={1, -1, 0, 0, 0};
-        
-        // LL を使う場合はコメントアウト
-        typedef LL int;
 
         int main(){
                 ${1}
         }
 
-snippet eratos
+snippet sosuu
+        bool isprime(LL x){
+            if(x == 2) return true;
+            if(x < 2 || x % 2 == 0) return false;
+            LL i = 3;
+            LL sqrtx = sqrt(x);
+            while(i <= sqrtx){
+                if(x % i == 0) return false;
+                i += 2;
+            }
+            return true;
+        }
         // maxまでの素数をvectorに入れて返す
         vector<LL> eratos(LL max){
             vector<LL> primeVec;
@@ -56,4 +66,5 @@ snippet eratos
                 if(isprime[i])  primeVec.pb(i);
             }
             return primeVec;
-        } 
+        }
+        ${1} 
