@@ -69,7 +69,21 @@ inoremap ( ()<LEFT>
 inoremap " ""<LEFT>
 inoremap ' ''<LEFT>
 inoremap { {}<LEFT>
-inoremap {<Enter> {}<LEFT><CR><ESC><S-o>
+
+" 隣接した{}で改行したらインデント
+function! IndentBraces()
+    let nowletter = getline(".")[col(".")-1]    " 今いるカーソルの文字
+    let beforeletter = getline(".")[col(".")-2] " 1つ前の文字
+
+    " カーソルの位置の括弧が隣接している場合
+    if nowletter == "}" && beforeletter == "{"
+        return "\n\n\<UP>\<RIGHT>    "
+    else
+        return "\n"
+    endif
+endfunction
+" Enterに割り当て
+inoremap <silent> <expr> <CR> IndentBraces()
 
 function! DeleteParenthesesAdjoin()
     let pos = col(".") - 1  " カーソルの位置．1からカウント
@@ -104,7 +118,6 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 set autoindent
-set smartindent
 
 augroup fileTypeIndent
     autocmd!
