@@ -70,6 +70,8 @@ inoremap " ""<LEFT>
 inoremap ' ''<LEFT>
 inoremap { {}<LEFT>
 
+nnoremap <silent> <C-q> :QuickRun<CR>
+
 " 隣接した{}で改行したらインデント
 function! IndentBraces()
     let nowletter = getline(".")[col(".")-1]    " 今いるカーソルの文字
