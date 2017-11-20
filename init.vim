@@ -2,6 +2,9 @@ if &compatible
   set nocompatible               " Be iMproved
 endif
 
+" Leaderキーをスペースに変更
+let mapleader = "\<Space>"
+
 " reset augroup
 augroup MyAutoCmd
   autocmd!
@@ -64,12 +67,14 @@ set clipboard+=unnamed
 " 単体スペースを無効化
 nnoremap <Space> <Nop>
 
-" Leaderキーをスペースに変更
-let mapleader = "\<Space>"
-
 " easy motion
 nmap <Leader>w <Plug>(easymotion-overwin-w)
+map f <Plug>(easymotion-fl)
+map t <Plug>(easymotion-tl)
+map F <Plug>(easymotion-Fl)
+map T <Plug>(easymotion-Tl)
 
+" 論理行移動と物理行移動を逆にmapping
 nnoremap j gj
 nnoremap k gk
 nnoremap <Down> gj
