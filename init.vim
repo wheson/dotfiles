@@ -2,6 +2,11 @@ if &compatible
   set nocompatible               " Be iMproved
 endif
 
+" reset augroup
+augroup MyAutoCmd
+  autocmd!
+augroup END
+
 " プラグインがインストールされるディレクトリ
 let s:dein_dir = expand('~/.cache/dein')
 " dein.vim 本体
@@ -50,12 +55,20 @@ set ambiwidth=double
 let g:python3_host_prog = $PYENV_ROOT . '/shims/python3'
 
 syntax on
-colorscheme iceberg 
 set number
 set cursorline
 tnoremap <Esc> <C-\><C-n>
 
 set clipboard+=unnamed
+
+" 単体スペースを無効化
+nnoremap <Space> <Nop>
+
+" Leaderキーをスペースに変更
+let mapleader = "\<Space>"
+
+" easy motion
+nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 nnoremap j gj
 nnoremap k gk
