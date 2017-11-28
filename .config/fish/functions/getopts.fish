@@ -1,0 +1,1 @@
+/Users/wheson/.config/fisherman/getopts/getopts.fish
