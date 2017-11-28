@@ -1,0 +1,1 @@
+~/.config/fisherman/rbenv/init.fish

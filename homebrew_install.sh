@@ -23,6 +23,8 @@ formulas=(
     composer
     neovim
     fish
+    rbenv 
+    ruby-build
 )
 
 "brew tap..."
@@ -45,6 +47,7 @@ casks=(
     vagrant-manager
     brackets
     1password
+    google-japanese-ime
 )
 
 echo "start brew cask install apps..."
