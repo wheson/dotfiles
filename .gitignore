@@ -1,2 +1,3 @@
 .DS_Store
 .config/fisherman
+.config/fish/fishd.*
