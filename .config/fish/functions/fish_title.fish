@@ -1,0 +1,1 @@
+/Users/wheson/.config/fisherman/bobthefish/fish_title.fish
