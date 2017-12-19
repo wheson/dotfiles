@@ -1,0 +1,13 @@
+[[plugins]]
+repo  = 'tpope/vim-endwise'
+on_ft = ['ruby']
+
+[[plugins]]
+repo = "vim-scripts/ruby-matchit"
+on_ft = ['ruby']
+hook_post_source = '''
+  if !exists('loaded_matchit')
+    " matchitを有効化
+    runtime macros/matchit.vim
+  endif
+'''

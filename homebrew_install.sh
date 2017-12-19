@@ -40,13 +40,12 @@ done
 
 casks=(
     dropbox
-    slack
+    skype
     iterm2
     virtualbox
     vagrant
     vagrant-manager
     brackets
-    1password
     google-japanese-ime
 )
 

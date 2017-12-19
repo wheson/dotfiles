@@ -58,6 +58,7 @@ set ambiwidth=double
 let g:python3_host_prog = $PYENV_ROOT . '/shims/python3'
 
 syntax on
+set termguicolors
 set number
 set cursorline
 tnoremap <Esc> <C-\><C-n>
@@ -66,6 +67,9 @@ set clipboard+=unnamed
 
 " 単体スペースを無効化
 nnoremap <Space> <Nop>
+
+" NERDTreeToggle
+map <C-t> :NERDTreeToggle<CR>
 
 " easy motion
 nmap <Leader>w <Plug>(easymotion-overwin-w)
@@ -81,6 +85,15 @@ nnoremap <Down> gj
 nnoremap <Up> gk
 nnoremap gj j
 nnoremap gk k
+
+" ウインドウ移動をmapping
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
+if has('nvim')
+  nmap <BS> <C-W>h
+endif
 
 inoremap [ []<LEFT>
 inoremap ( ()<LEFT>
@@ -144,3 +157,4 @@ augroup fileTypeIndent
     autocmd BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4
     autocmd BufNewFile,BufRead *.rb setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
+
