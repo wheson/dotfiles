@@ -65,6 +65,9 @@ tnoremap <Esc> <C-\><C-n>
 
 set clipboard+=unnamed
 
+set wildmenu " コマンドモードの補完
+set history=5000 " 保存するコマンド履歴の数
+
 " 単体スペースを無効化
 nnoremap <Space> <Nop>
 
