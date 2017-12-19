@@ -55,7 +55,7 @@ set fileencodings=ucs-boms,utf-8,euc-jp,cp932
 set fileformats=unix,dos,mac
 set ambiwidth=double
 
-let g:python3_host_prog = $PYENV_ROOT . '/shims/python3'
+let g:python3_host_prog = $PYENV_ROOT . '/usr/local/Cellar/python3/3.6.3/bin/python3'
 
 syntax on
 set termguicolors
