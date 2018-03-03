@@ -57,6 +57,7 @@ set ambiwidth=double
 
 let g:python3_host_prog = $PYENV_ROOT . '/usr/local/Cellar/python3/3.6.3/bin/python3'
 
+colorscheme Tomorrow-night
 syntax on
 set termguicolors
 set number
@@ -159,5 +160,14 @@ augroup fileTypeIndent
     autocmd!
     autocmd BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4
     autocmd BufNewFile,BufRead *.rb setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.js setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 
+
+" QuickRun
+let g:quickrun_config = {
+\   'cpp/c++' :{
+\       'command': 'c++',
+\       'cmdopt': '-std=c++14'
+\   }
+\}

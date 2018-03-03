@@ -1,0 +1,1 @@
+/Users/wheson/.config/fisherman/bass/functions/__bass.py
