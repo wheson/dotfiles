@@ -2,3 +2,4 @@
 .config/fisherman
 .config/fish/fishd.*
 .config/gcloud
+.config/configstore
