@@ -1,0 +1,3 @@
+[submodule ".config/nvim/snippets/cpp/CP-lib"]
+	path = .config/nvim/snippets/cpp/CP-lib
+	url = https://github.com/wheson/CP-lib.git
