@@ -26,3 +26,8 @@ set -x NDENV_ROOT $HOME/.anyenv/envs/ndenv
 set -x PATH $HOME/.anyenv/envs/ndenv/bin $PATH
 set -x PATH $NDENV_ROOT/shims $PATH
 set -x PATH $HOME/.anyenv/envs/ndenv/versions/v8.9.3/bin $PATH
+
+# pyenv path
+set -x PYENV_ROOT $HOME/.anyenv/envs/pyenv
+set -x PATH $PATH $HOME/.anyenv/envs/pyenv/bin
+set -gx PATH $HOME/.anyenv/envs/pyenv/shims $PATH

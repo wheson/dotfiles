@@ -1,14 +1,11 @@
-if &compatible
-  set nocompatible               " Be iMproved
-endif
-
-" Leaderキーをスペースに変更
-let mapleader = "\<Space>"
-
 " reset augroup
 augroup MyAutoCmd
   autocmd!
 augroup END
+
+let g:python3_host_prog = $PYENV_ROOT . '/shims/python3'
+
+" ------------ deinの設定 -------------
 
 " プラグインがインストールされるディレクトリ
 let s:dein_dir = expand('~/.cache/dein')
@@ -47,115 +44,57 @@ if dein#check_install()
   call dein#install()
 endif
 
+
+" ------------ setコマンド -------------
+" エンコーディングの設定
 set encoding=utf-8
 scriptencoding utf-8
 
-set fileencoding=utf-8
-set fileencodings=ucs-boms,utf-8,euc-jp,cp932
-set fileformats=unix,dos,mac
-set ambiwidth=double
+" 画面表示の設定
+set number         " 行番号を表示する
+set cursorline     " カーソル行の背景色を変える
+"set cursorcolumn   " カーソル位置のカラムの背景色を変える
+set laststatus=2   " ステータス行を常に表示
+"set cmdheight=2    " メッセージ表示欄を2行確保
+set showmatch      " 対応する括弧を強調表示
+set helpheight=999 " ヘルプを画面いっぱいに開く
+set list           " 不可視文字を表示
+"set listchars=tab:▸\ ,eol:↲,extends:❯,precedes:❮ " 不可視文字の表示記号指定
 
-let g:python3_host_prog = $PYENV_ROOT . '/usr/local/Cellar/python3/3.6.3/bin/python3'
 
-colorscheme Tomorrow-night
-syntax on
-set termguicolors
-set number
-set cursorline
-tnoremap <Esc> <C-\><C-n>
+" カーソル移動関連の設定
+"set backspace=indent,eol,start " Backspaceキーの影響範囲に制限を設けない
+set whichwrap=b,s,h,l,<,>,[,]  " 行頭行末の左右移動で行をまたぐ
+set scrolloff=8                " 上下8行の視界を確保
+set sidescrolloff=16           " 左右スクロール時の視界を確保
+set sidescroll=1               " 左右スクロールは一文字づつ行う
 
-set clipboard+=unnamed
 
-set wildmenu " コマンドモードの補完
-set history=5000 " 保存するコマンド履歴の数
+" ファイル処理関連の設定
+set confirm    " 保存されていないファイルがあるときは終了前に保存確認
+set hidden     " 保存されていないファイルがあるときでも別のファイルを開くことが出来る
+set autoread   "外部でファイルに変更がされた場合は読みなおす
+set nobackup   " ファイル保存時にバックアップファイルを作らない
+set noswapfile " ファイル編集中にスワップファイルを作らない
 
-" 単体スペースを無効化
-nnoremap <Space> <Nop>
 
-" NERDTreeToggle
-map <C-t> :NERDTreeToggle<CR>
+" 検索/置換の設定
+set hlsearch   " 検索文字列をハイライトする
+set incsearch  " インクリメンタルサーチを行う
+set ignorecase " 大文字と小文字を区別しない
+set smartcase  " 大文字と小文字が混在した言葉で検索を行った場合に限り、大文字と小文字を区別する
+set wrapscan   " 最後尾まで検索を終えたら次の検索で先頭に移る
+set gdefault   " 置換の時 g オプションをデフォルトで有効にする
 
-" easy motion
-nmap <Leader>w <Plug>(easymotion-overwin-w)
-map f <Plug>(easymotion-fl)
-map t <Plug>(easymotion-tl)
-map F <Plug>(easymotion-Fl)
-map T <Plug>(easymotion-Tl)
 
-" 論理行移動と物理行移動を逆にmapping
-nnoremap j gj
-nnoremap k gk
-nnoremap <Down> gj
-nnoremap <Up> gk
-nnoremap gj j
-nnoremap gk k
-
-" ウインドウ移動をmapping
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-nnoremap <C-h> <C-w>h
-if has('nvim')
-  nmap <BS> <C-W>h
-endif
-
-inoremap [ []<LEFT>
-inoremap ( ()<LEFT>
-inoremap " ""<LEFT>
-inoremap ' ''<LEFT>
-inoremap { {}<LEFT>
-
-nnoremap <silent> <C-q> :QuickRun<CR>
-
-" 隣接した{}で改行したらインデント
-function! IndentBraces()
-    let nowletter = getline(".")[col(".")-1]    " 今いるカーソルの文字
-    let beforeletter = getline(".")[col(".")-2] " 1つ前の文字
-
-    " カーソルの位置の括弧が隣接している場合
-    if nowletter == "}" && beforeletter == "{"
-        return "\n\n\<UP>\<RIGHT>    "
-    else
-        return "\n"
-    endif
-endfunction
-" Enterに割り当て
-inoremap <silent> <expr> <CR> IndentBraces()
-
-function! DeleteParenthesesAdjoin()
-    let pos = col(".") - 1  " カーソルの位置．1からカウント
-    let str = getline(".")  " カーソル行の文字列
-    let parentLList = ["(", "[", "{", "\'", "\""]
-    let parentRList = [")", "]", "}", "\'", "\""]
-    let cnt = 0
-
-    let output = ""
-
-    " カーソルが行末の場合
-    if pos == strlen(str)
-        return "\b"
-    endif
-    for c in parentLList
-        " カーソルの左右が同種の括弧
-        if str[pos-1] == c && str[pos] == parentRList[cnt]
-            call cursor(line("."), pos + 2)
-            let output = "\b"
-            break
-        endif
-        let cnt += 1
-    endfor
-    return output."\b"
-endfunction
-" BackSpaceに割り当て
-inoremap <silent> <BS> <C-R>=DeleteParenthesesAdjoin()<CR>
-
+" タブ/インデントの設定
+set expandtab     " タブ入力を複数の空白入力に置き換える
+set tabstop=4     " 画面上でタブ文字が占める幅
+set shiftwidth=4  " 自動インデントでずれる幅
+set softtabstop=4 " 連続した空白に対してタブキーやバックスペースキーでカーソルが動く幅
+set autoindent    " 改行時に前の行のインデントを継続する
+set smartindent   " 改行時に入力された行の末尾に合わせて次の行のインデントを増減する
 "インデントの大きさをファイルごとに設定
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set expandtab
-set autoindent
-
 augroup fileTypeIndent
     autocmd!
     autocmd BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4
@@ -164,7 +103,94 @@ augroup fileTypeIndent
 augroup END
 
 
+" 動作環境との統合関連の設定
+" OSのクリップボードをレジスタ指定無しで Yank, Put 出来るようにする
+set clipboard=unnamed,unnamedplus
+" マウスの入力を受け付ける
+set mouse=a
+" 全角文字を表示
+set ambiwidth=double
+" True Colorの使用
+set termguicolors
+
+
+" コマンドラインの設定
+" コマンドラインモードでTABキーによるファイル名補完を有効にする
+set wildmenu wildmode=list:longest,full
+" コマンドラインの履歴を10000件保存する
+set history=10000
+
+
+"ビープ音すべてを無効にする
+set visualbell t_vb=
+set noerrorbells "エラーメッセージの表示時にビープを鳴らさない
+
+
+" ファイル読み込みの設定
+set fileencoding=utf-8
+set fileencodings=ucs-boms,utf-8,euc-jp,cp932
+set fileformats=unix,dos,mac
+
+
+" ------------ colorscheme -------------
+colorscheme Tomorrow-night
+syntax on
+
+
+" ------------ mapping -------------
+tnoremap <Esc> <C-\><C-n>
+
+
+" 単体スペースを無効化
+nnoremap <Space> <Nop>
+
+" 論理行移動と物理行移動を逆にmapping
+noremap j gj
+noremap k gk
+noremap <Down> gj
+noremap <Up> gk
+noremap gj j
+noremap gk k
+
+" 対応する括弧に移動
+noremap m %
+
+" 行頭行末コマンドをmapping
+noremap <S-h> ^
+noremap <S-l> $
+
+" 段落移動コマンドをmapping
+noremap <S-j> }
+noremap <S-k> {
+
+" ウインドウ移動コマンドをmapping
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
+if has('nvim')
+  nmap <BS> <C-W>h
+endif
+
+
+" ------------- 以下外部プラグイン設定 ---------------
+
+" NERDTreeToggle
+map <C-t> :NERDTreeToggle<CR>
+
+
+" easy motion
+" Leaderキーをスペースに変更
+let mapleader = "\<Space>"
+
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+" 両方向に1文字検索
+map f <Plug>(easymotion-bd-fl)
+map t <Plug>(easymotion-bd-tl)
+
+
 " QuickRun
+nnoremap <silent> <C-q> :QuickRun<CR>
 let g:quickrun_config = {
 \   'cpp/c++' :{
 \       'command': 'c++',
