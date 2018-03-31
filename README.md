@@ -5,4 +5,5 @@
 
 ## リンク貼り直し
 ``$ cd $DOTFILES``
+
 ``$ make deploy``
