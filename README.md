@@ -4,6 +4,6 @@
 ``$bash -c "$(curl -L raw.githubusercontent.com/wheson/dotfiles/master/install)"``
 
 ## リンク貼り直し
-``$ cd $DOTFILES``
+``$ cd $DOTPATH``
 
 ``$ make deploy``
