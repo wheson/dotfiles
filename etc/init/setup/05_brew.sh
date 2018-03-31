@@ -11,17 +11,3 @@ which brew >/dev/null 2>&1 && brew update
 echo "ok. run brew upgrade..."
 
 brew upgrade --all
-
-# 最低限必要なツールをインストール
-formulas=(
-    git
-    wget
-    curl
-    openssl
-    neovim
-    fish
-    readline
-    xz
-)
-
-
