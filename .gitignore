@@ -1,5 +1,5 @@
 .DS_Store
-.config/fisherman
-.config/fish/fishd.*
-.config/gcloud
-.config/configstore
+*~
+.config/*
+!.config/fish
+!.config/nvim

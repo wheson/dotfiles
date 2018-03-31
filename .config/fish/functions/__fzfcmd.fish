@@ -1,1 +1,0 @@
-/Users/wheson/.config/fisherman/fzf/functions/__fzfcmd.fish

@@ -1,13 +1,8 @@
 # dotfiles
 
-シンボリックリンク生成
+## 初期セットアップ
+bash -c "$(curl -L raw.githubusercontent.com/wheson/dotfiles/master/install)"
 
-```
-bash deploy.sh
-```
-
-Homebrewとその他インストール
-
-```
-bash homebrew_install.sh
-```
+## リンク貼り直し
+$ cd $DOTFILES
+$ make deploy

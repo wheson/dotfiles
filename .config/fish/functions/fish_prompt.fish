@@ -1,1 +1,0 @@
-/Users/wheson/.config/fisherman/agnoster/fish_prompt.fish
