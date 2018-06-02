@@ -1,5 +1,3 @@
-set fish_theme agnoster
-
 # alias
 balias g git 
 
@@ -31,3 +29,9 @@ set -x PATH $HOME/.anyenv/envs/ndenv/versions/v8.9.3/bin $PATH
 set -x PYENV_ROOT $HOME/.anyenv/envs/pyenv
 set -x PATH $PATH $HOME/.anyenv/envs/pyenv/bin
 set -gx PATH $HOME/.anyenv/envs/pyenv/shims $PATH
+
+# MacPorts Installer addition on 2014-09-25_at_18:39:26: adding an appropriate PATH variable for use with MacPorts.
+set -xg PATH /opt/local/bin /opt/local/sbin $PATH
+# Finished adapting your PATH environment variable for use with MacPorts.
+
+set -x PYTHONPATH $HOME/.anyenv/envs/pyenv/shims/python2.7/site-packages
