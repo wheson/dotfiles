@@ -197,3 +197,7 @@ let g:quickrun_config = {
 \       'cmdopt': '-std=c++14'
 \   }
 \}
+
+" Ale
+let g:syntastic_cpp_compiler="gcc"
+let g:syntastic_cpp_compiler_options=" -std=c++14"
