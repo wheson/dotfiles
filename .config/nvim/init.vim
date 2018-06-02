@@ -199,5 +199,12 @@ let g:quickrun_config = {
 \}
 
 " Ale
-let g:syntastic_cpp_compiler="gcc"
-let g:syntastic_cpp_compiler_options=" -std=c++14"
+let g:ale_linters = {'cpp': ['gcc']}
+let g:ale_cpp_gcc_executable = '/opt/local/bin/g++'
+let g:ale_cpp_gcc_options="-std=c++14"
+
+" indentLine
+let g:indentLine_color_term = 239
+let g:indentLine_color_gui = '#484848'
+let g:indentLine_char = '¦' "use ¦, ┆ or │
+let g:indentLine_conceallevel = 1
