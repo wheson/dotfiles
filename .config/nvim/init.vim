@@ -133,7 +133,7 @@ set fileformats=unix,dos,mac
 
 
 " ------------ colorscheme -------------
-colorscheme Tomorrow-night
+colorscheme dracula
 syntax on
 
 
