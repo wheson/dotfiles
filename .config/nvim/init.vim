@@ -207,4 +207,4 @@ let g:ale_cpp_gcc_options="-std=c++14"
 let g:indentLine_color_term = 239
 let g:indentLine_color_gui = '#484848'
 let g:indentLine_char = '¦' "use ¦, ┆ or │
-let g:indentLine_conceallevel = 1
+let g:indentLine_conceallevel = 0
