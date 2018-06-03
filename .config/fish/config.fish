@@ -1,3 +1,8 @@
+# powerline
+function fish_prompt
+    powerline-shell --shell bare $status
+end
+
 # alias
 balias g git 
 
