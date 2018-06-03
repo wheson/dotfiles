@@ -44,8 +44,6 @@ hook_add = '''
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
 hook_add = '''
-  imap <C-k> <Plug>(neosnippet_expand_or_jump)
-  smap <C-k> <Plug>(neosnippet_expand_or_jump)
   let g:neosnippet#snippets_directory = '~/.config/nvim/snippets'
 '''
 
@@ -56,10 +54,10 @@ repo = 'Shougo/neosnippet-snippets'
 repo = 'easymotion/vim-easymotion'
 
 [[plugins]]
-repo = 'w0rp/ale'
+repo = 'scrooloose/nerdtree'
 
 [[plugins]]
-repo = 'scrooloose/nerdtree'
+repo = 'dracula/vim'
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
