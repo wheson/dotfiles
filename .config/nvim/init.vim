@@ -188,21 +188,6 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 map f <Plug>(easymotion-bd-fl)
 map t <Plug>(easymotion-bd-tl)
 
-
-" QuickRun
-nnoremap <silent> <C-q> :QuickRun<CR>
-let g:quickrun_config = {
-\   'cpp/c++' :{
-\       'command': 'c++',
-\       'cmdopt': '-std=c++14'
-\   }
-\}
-
-" Ale
-let g:ale_linters = {'cpp': ['gcc']}
-let g:ale_cpp_gcc_executable = '/opt/local/bin/g++'
-let g:ale_cpp_gcc_options="-std=c++14"
-
 " indentLine
 let g:indentLine_color_term = 239
 let g:indentLine_color_gui = '#484848'
