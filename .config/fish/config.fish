@@ -40,3 +40,6 @@ set -xg PATH /opt/local/bin /opt/local/sbin $PATH
 # Finished adapting your PATH environment variable for use with MacPorts.
 
 set -x PYTHONPATH $HOME/.anyenv/envs/pyenv/shims/python2.7/site-packages
+
+# LLVM path
+set -g fish_user_paths "/usr/local/opt/llvm/bin" $fish_user_paths
