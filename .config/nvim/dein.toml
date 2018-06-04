@@ -32,9 +32,6 @@ source ~/.config/nvim/plugins/neosnippet.rc.vim
 repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
-repo = 'easymotion/vim-easymotion'
-
-[[plugins]]
 repo = 'scrooloose/nerdtree'
 
 [[plugins]]

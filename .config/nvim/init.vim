@@ -179,15 +179,6 @@ endif
 map <C-t> :NERDTreeToggle<CR>
 
 
-" easy motion
-" Leaderキーをスペースに変更
-let mapleader = "\<Space>"
-
-nmap <Leader>w <Plug>(easymotion-overwin-w)
-" 両方向に1文字検索
-map f <Plug>(easymotion-bd-fl)
-map t <Plug>(easymotion-bd-tl)
-
 " indentLine
 let g:indentLine_color_term = 239
 let g:indentLine_color_gui = '#484848'
