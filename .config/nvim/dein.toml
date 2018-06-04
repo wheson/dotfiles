@@ -8,31 +8,10 @@ repo = 'Shougo/dein.vim'
 repo = 'cespare/vim-toml'
 
 [[plugins]]
-repo = 'Shougo/unite.vim'
-hook_add = '''
-source ~/.config/nvim/plugins/unite.rc.vim
-'''
-
-[[plugins]]
-repo = 'Shougo/neomru.vim'
-
-[[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = '''
 source ~/.config/nvim/plugins/lightline.rc.vim
 '''
-
-[[plugins]]
-repo = 'Shougo/neosnippet.vim'
-hook_add = '''
-source ~/.config/nvim/plugins/neosnippet.rc.vim
-'''
-
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
-
-[[plugins]]
-repo = 'scrooloose/nerdtree'
 
 [[plugins]]
 repo = 'dracula/vim'
@@ -51,6 +30,15 @@ repo='prabirshrestha/asyncomplete.vim'
 
 [[plugins]]
 repo='prabirshrestha/asyncomplete-lsp.vim'
+
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+hook_add = '''
+source ~/.config/nvim/plugins/neosnippet.rc.vim
+'''
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
 repo='prabirshrestha/asyncomplete-neosnippet.vim'
