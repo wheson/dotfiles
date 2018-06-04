@@ -171,12 +171,3 @@ nnoremap <C-h> <C-w>h
 if has('nvim')
   nmap <BS> <C-W>h
 endif
-
-
-" ------------- 以下外部プラグイン設定 ---------------
-
-" indentLine
-let g:indentLine_color_term = 239
-let g:indentLine_color_gui = '#484848'
-let g:indentLine_char = '¦' "use ¦, ┆ or │
-let g:indentLine_conceallevel = 0
