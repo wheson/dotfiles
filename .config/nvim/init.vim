@@ -175,10 +175,6 @@ endif
 
 " ------------- 以下外部プラグイン設定 ---------------
 
-" NERDTreeToggle
-map <C-t> :NERDTreeToggle<CR>
-
-
 " indentLine
 let g:indentLine_color_term = 239
 let g:indentLine_color_gui = '#484848'
