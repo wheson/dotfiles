@@ -141,8 +141,8 @@ syntax on
 tnoremap <Esc> <C-\><C-n>
 
 
-" 単体スペースを無効化
-nnoremap <Space> <Nop>
+" 単体スペースをLeaderにmapping
+let mapleader = "\<Space>"
 
 " 論理行移動と物理行移動を逆にmapping
 noremap j gj
