@@ -11,3 +11,25 @@ hook_post_source = '''
     runtime macros/matchit.vim
   endif
 '''
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+depends = ['neomru.vim', 'neoyank.vim']
+on_cmd = 'Denite'
+hook_add = '''
+source ~/.config/nvim/plugins/denite.rc.nvim
+'''
+hook_post_source = '''
+call denite#custom#var('file_rec', 'command',
+\ ['pt', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', ''])
+call denite#custom#var('grep', 'command',
+\ ['pt', '--nogroup', '--nocolor', '--smart-case', '--hidden'])
+call denite#custom#var('grep', 'default_opts', [])
+call denite#custom#var('grep', 'recursive_opts', [])
+'''
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+
+[[plugins]]
+repo = 'Shougo/neoyank.vim'
