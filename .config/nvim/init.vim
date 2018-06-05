@@ -142,12 +142,19 @@ set fileformats=unix,dos,mac
 " ------------ mapping -------------
 tnoremap <Esc> <C-\><C-n>
 
+" 十字キーの無効化
+map <Up> <Nop>
+map <Down> <Nop>
+map <Left> <Nop>
+map <Right> <Nop>
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
 
 " 論理行移動と物理行移動を逆にmapping
 noremap j gj
 noremap k gk
-noremap <Down> gj
-noremap <Up> gk
 noremap gj j
 noremap gk k
 
