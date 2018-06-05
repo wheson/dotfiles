@@ -19,6 +19,9 @@ source ~/.config/nvim/plugins/lightline.rc.vim
 
 [[plugins]]
 repo = 'dracula/vim'
+hook_add = '''
+au MyAutoCmd VimEnter * nested colorscheme dracula
+'''
 
 [[plugins]]
 repo = 'autozimu/LanguageClient-neovim'
