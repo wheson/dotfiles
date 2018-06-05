@@ -1,9 +1,20 @@
 set hidden
 
-let g:LanguageClient_serverCommands = {
-    \ 'cpp': ['clangd']
-    \ }
+let g:LanguageClient_serverCommands = {}
+if executable('clangd')
+    let g:LanguageClient_serverCommands = {
+        \ 'cpp': ['clangd']
+        \ }
+endif
+
+augroup LanguageClient_config
+    autocmd!
+    autocmd User LanguageClientStarted setlocal signcolumn=yes
+    autocmd User LanguageClientStopped setlocal signcolumn=auto
+augroup END
+
 let g:LanguageClient_autoStart = 1
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+nnoremap <Leader>lh :call LanguageClient_textDocument_hover()<CR>
+nnoremap <Leader>ld :call LanguageClient_textDocument_definition()<CR>
+nnoremap <Leader>lr :call LanguageClient_textDocument_rename()<CR>
+nnoremap <Leader>lf :call LanguageClient_textDocument_formatting()<CR>
