@@ -26,6 +26,3 @@ build = 'bash install.sh'
 hook_add = '''
 source ~/.config/nvim/plugins/LanguageClient-neovim.rc.vim
 '''
-
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
