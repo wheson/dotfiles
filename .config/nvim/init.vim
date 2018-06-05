@@ -47,6 +47,12 @@ if dein#check_install()
   call dein#install()
 endif
 
+" ------------ colorscheme -------------
+" True Colorの使用
+set termguicolors
+
+colorscheme dracula
+syntax on
 
 " ------------ setコマンド -------------
 " エンコーディングの設定
@@ -56,7 +62,7 @@ scriptencoding utf-8
 " 画面表示の設定
 set number         " 行番号を表示する
 set cursorline     " カーソル行の背景色を変える
-"set cursorcolumn   " カーソル位置のカラムの背景色を変える
+set cursorcolumn   " カーソル位置のカラムの背景色を変える
 set laststatus=2   " ステータス行を常に表示
 "set cmdheight=2    " メッセージ表示欄を2行確保
 set showmatch      " 対応する括弧を強調表示
@@ -113,8 +119,6 @@ set clipboard=unnamed,unnamedplus
 set mouse=a
 " 全角文字を表示
 set ambiwidth=double
-" True Colorの使用
-set termguicolors
 
 
 " コマンドラインの設定
@@ -135,17 +139,9 @@ set fileencodings=ucs-boms,utf-8,euc-jp,cp932
 set fileformats=unix,dos,mac
 
 
-" ------------ colorscheme -------------
-colorscheme dracula
-syntax on
-
-
 " ------------ mapping -------------
 tnoremap <Esc> <C-\><C-n>
 
-
-" 単体スペースをLeaderにmapping
-let mapleader = "\<Space>"
 
 " 論理行移動と物理行移動を逆にmapping
 noremap j gj
