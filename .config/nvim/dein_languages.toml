@@ -1,0 +1,9 @@
+# cpp
+[[plugins]]
+repo = 'octol/vim-cpp-enhanced-highlight'
+on_ft = ['cpp']
+
+# ruby
+[[plugins]]
+repo  = 'tpope/vim-endwise'
+on_ft = ['ruby']
