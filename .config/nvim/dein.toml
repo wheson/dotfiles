@@ -8,10 +8,6 @@ source ~/.config/nvim/plugins/indentLine.rc.vim
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'cespare/vim-toml'
-on_ft = 'toml'
-
-[[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = '''
 source ~/.config/nvim/plugins/lightline.rc.vim
@@ -30,3 +26,6 @@ build = 'bash install.sh'
 hook_add = '''
 source ~/.config/nvim/plugins/LanguageClient-neovim.rc.vim
 '''
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'

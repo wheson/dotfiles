@@ -1,9 +1,14 @@
 # cpp
 [[plugins]]
-repo = 'octol/vim-cpp-enhanced-highlight'
-on_ft = ['cpp']
+repo = 'vim-jp/vim-cpp'
+on_ft = 'cpp'
 
 # ruby
 [[plugins]]
-repo  = 'tpope/vim-endwise'
-on_ft = ['ruby']
+repo = 'tpope/vim-endwise'
+on_ft = 'ruby'
+
+# toml
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
