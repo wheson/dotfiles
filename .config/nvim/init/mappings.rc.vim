@@ -1,5 +1,9 @@
 tnoremap <Esc> <C-\><C-n>
 
+" ノーマルモード時だけ ; と : を入れ替える
+nnoremap ; :
+nnoremap : ;
+
 " 十字キーの無効化
 map <Up> <Nop>
 map <Down> <Nop>
