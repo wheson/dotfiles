@@ -1,12 +1,11 @@
 #!/bin/bash
 
-if [ -z "${DOTPATH:-}" ]; then
-    DOTPATH=~/.dotfiles; export DOTPATH
-fi
+set -u
+DOTPATH="$HOME/.dotfiles"
 
 # git が使えるなら git
 if has "git"; then
-    git clone --recursive "https://github.com/wheson/dotfiles.git" "$DOTPATH"
+    git clone --recursive "https://github.com/wheson/dotfiles.git" "${DOTPATH}"
 
 # 使えない場合は curl か wget を使用する
 elif has "curl" || has "wget"; then
@@ -22,16 +21,18 @@ elif has "curl" || has "wget"; then
     fi | tar xv -
 
     # 解凍したら，DOTPATH に置く
-    mv -f dotfiles-master "$DOTPATH"
+    mv -f dotfiles-master "${DOTPATH}"
 
 else
     die "curl or wget required"
 fi
 
-cd ~/.dotfiles
+cd ${DOTPATH}
 if [ $? -ne 0 ]; then
-    die "not found: $DOTPATH"
+    die "not found: ${DOTPATH}"
 fi
+
+DOTPATH=~/.dotfiles; export DOTPATH
 
 # リンクを実行する
 make deploy
