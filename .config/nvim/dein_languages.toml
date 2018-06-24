@@ -12,3 +12,8 @@ on_ft = 'ruby'
 [[plugins]]
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
+
+# json
+[[plugins]]
+repo = 'elzr/vim-json'
+on_ft = 'json'
