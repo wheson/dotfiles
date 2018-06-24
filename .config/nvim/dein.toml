@@ -16,6 +16,7 @@ source ~/.config/nvim/plugins/lightline.rc.vim
 [[plugins]]
 repo = 'dracula/vim'
 hook_add = '''
+set background=dark
 au MyAutoCmd VimEnter * nested colorscheme dracula
 '''
 
