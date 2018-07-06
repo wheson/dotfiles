@@ -30,3 +30,9 @@ source ~/.config/nvim/plugins/LanguageClient-neovim.rc.vim
 
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'cohama/lexima.vim'
+
+[[plugins]]
+repo = 'tpope/vim-surround'
