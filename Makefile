@@ -3,7 +3,7 @@ CANDIDATES := $(wildcard .??*)
 EXCLUSIONS := .DS_Store .git .gitmodules .travis.yml .gitignore
 DOTFILES   := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
 
-deploy:
+link:
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
 
 init:

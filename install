@@ -1,41 +1,69 @@
-#!/bin/bash
+#!bin/bash
 
-set -u
+set -euo pipefail
+
+# set dotfiles path
 DOTPATH="$HOME/.dotfiles"
 
-# git が使えるなら git
-if has "git"; then
-    git clone --recursive "https://github.com/wheson/dotfiles.git" "${DOTPATH}"
+## functions
+info() { 
+  
+  echo "$1"
+}
 
-# 使えない場合は curl か wget を使用する
-elif has "curl" || has "wget"; then
-    tarball="https://github.com/wheson/dotfiles/archive/master.tar.gz"
+error() {
+  
+  echo "$1"
+}
 
-    # どっちかでダウンロードして，tar に流す
-    if has "curl"; then
-        curl -L "$tarball"
+warn() {
+  
+  echo "$1"
+}
 
-    elif has "wget"; then
-        wget -O - "$tarball"
+log() { 
 
-    fi | tar xv -
+  echo "$1"
+}
 
-    # 解凍したら，DOTPATH に置く
-    mv -f dotfiles-master "${DOTPATH}"
+# Start install
+read -p "$(warn 'Are you sure you want to install it? [y/N] ')" -n 1 -r
+if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+  echo ""
+  error "Close the installer"
+  exit 1
+fi
+echo ""
 
+## Start the dotfiles install
+info "Start the dotfiles install [1/10]"
+if [ -d "$DOTPATH" ]; then
+  error "The dotfiles directory already exists! Please command \"rm -r $HOME/.dotfiles\""
+  exit 1
+fi
+
+info "Downloading the dotfiles [2/10]"
+if [ -x "$(command -v git)" ]; then
+  git clone --recursive "https://github.com/wheson/dotfiles.git" "${DOTPATH}"
 else
-    die "curl or wget required"
-fi
+  tarball="https://github.com/wheson/dotfiles/archive/master.tar.gz"
+  if [ -x "$(command -v curl)" ]; then
+    curl -L "$tarball"
+  elif [ -x "$(command -v wget)" ]; then
+    wget -O - "$tarball"
+  else
+    error "Failed to download the dotfiles. Please install git, curl or wget."
+    exit 1
+  fi | tar xv -
 
-cd ${DOTPATH}
-if [ $? -ne 0 ]; then
-    die "not found: ${DOTPATH}"
+  mv -f dotfiles-master "${DOTPATH}"
 fi
+info "Completed download the dotfiles [3/10]"
 
 DOTPATH=~/.dotfiles; export DOTPATH
 
-# リンクを実行する
-make deploy
+## Symbolic link
+make link
 
-# 初期化スクリプトを実行する
+## Exec init scripts
 make init
