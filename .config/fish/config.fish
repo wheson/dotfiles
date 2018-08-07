@@ -15,6 +15,8 @@ set PATH ~/.composer/vendor/bin $PATH
 
 set PATH ~/.anyenv/bin $PATH
 
+set PATH $GOPATH/bin $PATH
+
 # rbenv path
 set -x RBENV_ROOT $HOME/.anyenv/envs/rbenv
 set -x PATH $PATH $HOME/.anyenv/envs/rbenv/bin
