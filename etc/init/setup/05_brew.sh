@@ -1,13 +1,13 @@
 #!/bin/bash
-echo "installing homebrew..."
+echo "Installing homebrew..."
 which brew >/dev/null 2>&1 || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-echo "run brew doctor..."
+echo "Run brew doctor..."
 which brew >/dev/null 2>&1 && brew doctor
 
-echo "run brew update..."
+echo "Run brew update..."
 which brew >/dev/null 2>&1 && brew update
 
-echo "ok. run brew upgrade..."
+echo "OK. Run brew upgrade..."
 
 brew upgrade --all

@@ -8,3 +8,4 @@ brew install neovim
 brew install fish
 brew install readline
 brew install xz
+brew install go
