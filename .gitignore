@@ -1,5 +1,4 @@
-*
+.config/*
 !.config/fish
 !.config/nvim
 !.config/git
-!./etc/init/*
