@@ -6,4 +6,4 @@
 ## リンク貼り直し
 ``$ cd $DOTPATH``
 
-``$ make deploy``
+``$ make link``
