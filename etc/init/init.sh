@@ -4,11 +4,13 @@ e_arrow() {
     printf " \033[37;1m%s\033[m\n" "➜ $*"
 }
 
-for i in "$DOTPATH"/etc/init/setup/*.sh
-do
+if [ $(uname) = "Darwin" ]; then
+  for i in "$DOTPATH"/etc/init/setup/macos/*.sh
+  do
     if [ -f "$i" ]; then
-        e_arrow "$(basename "$i")"; bash "$i"
+      e_arrow "$(basename "$i")"; bash "$i"
     else
-        continue
+      continue
     fi
-done
+  done
+fi
