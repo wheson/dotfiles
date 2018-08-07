@@ -2,4 +2,4 @@
 !.config/fish
 !.config/nvim
 !.config/git
-!etc/*
+!./etc/init/*
