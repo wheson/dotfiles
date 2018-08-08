@@ -2,7 +2,7 @@
 if [ -x $(command which anyenv) ]; then
   if [ ! -x $(command which pyenv) ]; then
     anyenv install pyenv
-    exec $SHELL -l
+    source .bash_profile
   fi
   if [ -x $(command which pyenv) ]; then
     # default 3.6.5

@@ -4,7 +4,7 @@ if [ ! -x "$(command which anyenv)" ]; then
   # bash
   echo 'export PATH="$HOME/.anyenv/bin:$PATH"' >> ~/.bash_profile
   echo 'eval "$(anyenv init -)"' >> ~/.bash_profile
-  exec $SHELL -l
+  source .bash_profile
   # zsh
 
   # fish
