@@ -2,7 +2,7 @@
 if [ ! -x $(command -v brew) ]; then
   echo "Installing homebrew..."
   which brew >/dev/null 2>&1 || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-then
+fi
 
 echo "Run brew doctor..."
 which brew >/dev/null 2>&1 && brew doctor
