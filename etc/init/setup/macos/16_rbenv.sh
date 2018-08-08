@@ -2,6 +2,11 @@
 if [ -x $(command -v anyenv) ]; then
   if [ ! -x $(command -v rbenv) ]; then
     anyenv install rbenv
+    # bash
+    exec $SHELL -l
+    # zsh
+
+    # fish
     echo "set -x RBENV_ROOT \$HOME/.anyenv/envs/rbenv" >> ~/.config/fish/config.fish
     echo "set -x PATH \$PATH \$HOME/.anyenv/envs/rbenv/bin" >> ~/.config/fish/config.fish
     echo "set -gx PATH \$HOME/.anyenv/envs/rbenv/shims \$PATH" >> ~/.config/fish/config.fish
