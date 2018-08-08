@@ -43,13 +43,13 @@ if [ -d "$DOTPATH" ]; then
 fi
 
 info "Downloading the dotfiles [2/10]"
-if [ -x "$(command -v git)" ]; then
+if [ -x "$(command which git)" ]; then
   git clone --recursive "https://github.com/wheson/dotfiles.git" "${DOTPATH}"
 else
   tarball="https://github.com/wheson/dotfiles/archive/master.tar.gz"
-  if [ -x "$(command -v curl)" ]; then
+  if [ -x "$(command which curl)" ]; then
     curl -L "$tarball"
-  elif [ -x "$(command -v wget)" ]; then
+  elif [ -x "$(command which wget)" ]; then
     wget -O - "$tarball"
   else
     error "Failed to download the dotfiles. Please install git, curl or wget."
@@ -62,6 +62,7 @@ info "Completed download the dotfiles [3/10]"
 
 DOTPATH=~/.dotfiles; export DOTPATH
 
+cd $DOTPATH
 ## Symbolic link
 make link
 
