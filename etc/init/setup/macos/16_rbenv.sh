@@ -2,7 +2,7 @@
 if [ -x $(command which anyenv) ]; then
   if [ ! -x $(command which rbenv) ]; then
     anyenv install rbenv
-    source .bash_profile
+    source ~/.bash_profile
   fi
   if [ -x $(command which rbenv) ]; then
     # default 2.4.0
