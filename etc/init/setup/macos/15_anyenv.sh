@@ -1,5 +1,5 @@
 #!/bin/bash
-if [ ! -x "$(command type anyenv)" ]; then
+if !(type "anyenv" > /dev/null 2>&1); then
   git clone https://github.com/riywo/anyenv ~/.anyenv
   # bash
   echo 'export PATH="$HOME/.anyenv/bin:$PATH"' >> ~/.bash_profile
