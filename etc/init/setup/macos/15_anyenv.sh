@@ -9,4 +9,5 @@ if !(type "anyenv" > /dev/null 2>&1); then
 
   # fish
   echo "set PATH ~/.anyenv/bin \$PATH" >> ~/.config/fish/config.fish
+  echo "eval (anyenv init - | source)" >> ~/.config/fish/config.fish
 fi

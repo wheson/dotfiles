@@ -13,4 +13,12 @@ if [ $(uname) = "Darwin" ]; then
       continue
     fi
   done
+  for i in "$DOTPATH"/etc/init/setup/macos/*.fish
+  do
+    if [ -f "$i" ]; then
+      e_arrow "$(basename "$i")"; fish "$i"
+    else
+      continue
+    fi
+  done
 fi
