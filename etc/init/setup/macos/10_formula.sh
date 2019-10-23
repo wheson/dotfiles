@@ -1,10 +1,5 @@
 #!/bin/bash
-brew install git
-brew install wget
-brew install curl
-brew install openssl
+brew install zsh
+brew install zplug
+brew install peco
 brew install neovim
-brew install fish
-brew install readline
-brew install xz
-brew install go
